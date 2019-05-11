@@ -11,8 +11,7 @@ _search_params = {
     'q': 'wahlplakat 2019',
     'num': 2,
     'safe': 'off',
-    'fileType': 'jpg|gif|png',
-    'imgSize': 'medium',
+    'fileType': 'png',
     'searchType': 'image'
     # 'imgDominantColor': 'black|blue|brown|gray|green|pink|purple|teal|white|yellow'
 }
@@ -22,7 +21,7 @@ for partei in partei_list:
 
     _search_params.update({'q': partei + ' wahlplakat 2019'})
 
-    picDir = 'pics/' + partei.replace(" ", "")
+    picDir = '../Data/Raw/' + partei.replace(" ", "")
 
     if not os.path.exists(picDir):
         os.mkdir(picDir)
@@ -30,4 +29,4 @@ for partei in partei_list:
     gis.search(_search_params)
     for image in gis.results():
         image.download(picDir)
-        image.resize(500, 500)
+    gis.results().clear()
