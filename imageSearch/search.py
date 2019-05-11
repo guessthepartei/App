@@ -4,14 +4,16 @@ from google_images_search import GoogleImagesSearch
 
 gis = GoogleImagesSearch('AIzaSyCcrhOwuC5TK_O18yjeSTCuXEHVxk-9LTQ', '005383774336154718355:xu2fzioh270')
 
-partei_list = ['CDU', 'Alternative fuer Deutschland', 'Tierschutzpartei']
+# CDU funktioniert sehr schlecht
+partei_list = ['SPD', 'NPD', 'MLPD', 'Piratenpartei']
 
 # define search params:
 _search_params = {
     'q': 'wahlplakat 2019',
-    'num': 2,
+    'num': 10,
     'safe': 'off',
     'fileType': 'png',
+    'imgType': 'news',
     'searchType': 'image'
     # 'imgDominantColor': 'black|blue|brown|gray|green|pink|purple|teal|white|yellow'
 }
