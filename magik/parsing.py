@@ -1,4 +1,5 @@
 import requests
+import sys
 # If you are using a Jupyter notebook, uncomment the following line.
 #%matplotlib inline
 import matplotlib.pyplot as plt
@@ -22,12 +23,11 @@ vision_base_url = "https://westeurope.api.cognitive.microsoft.com/vision/v2.0/"
 ocr_url = vision_base_url + "ocr"
 
 # Set image_url to the URL of an image that you want to analyze.
-image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" + \
-    "Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png"
+image_url = "https://raw.githubusercontent.com/guessthepartei/App/master/magik/dataset/" + sys.argv[1]
 
 headers = {'Ocp-Apim-Subscription-Key': subscription_key}
 params  = {'language': 'de', 'detectOrientation': 'true'}
-data    = {'url': "https://www.piratenpartei-hessen.de/wp-content/uploads/2019/04/PP_Veranstaltung_TW_440x220.jpg"}
+data    = {'url': image_url}
 response = requests.post(ocr_url, headers=headers, params=params, json=data)
 response.raise_for_status()
 
@@ -37,12 +37,12 @@ analysis = response.json()
 line_infos = [region["lines"] for region in analysis["regions"]]
 word_infos = []
 lines = []
+str = ""
 for line in line_infos:
     for word_metadata in line:
-        str = ""
         for word_info in word_metadata["words"]:
             str = str + " " + word_info["text"]
-        lines.append(str)
+        str = str + "\n"
 word_infos
-print(lines)
+print(str)
 

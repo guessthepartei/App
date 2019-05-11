@@ -17,12 +17,11 @@ party = random.choice(partys)
 
 
 print(party)
+plakats = os.listdir('dataset/{}'.format(party))
+print(plakats)
 
-plakat = random.choice(os.listdir('dataset/{}'.format(party)))
-
+plakat = random.choice(plakats)
 print(plakat)
 
 
-os.system("python3 parsing.py {}".format(plakat))
-# Or
-#print(my_output)
+os.system("python3 parsing.py {}/{}".format(party, plakat))
