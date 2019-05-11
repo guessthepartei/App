@@ -3,7 +3,7 @@ from guizero import App, Text, Picture, PushButton
 
 class Gui(object):
     # text, picture = {}
-    # buttons = []
+    buttons = []
     # app = {}
 
     # The class "constructor" - It's actually an initializer
@@ -14,7 +14,7 @@ class Gui(object):
         print(buttons)
         for x in buttons:
             print(x)
-            # self.buttons.append(button=PushButton(self.app, command=x['command'], text=x['text']))
+            self.buttons.append(PushButton(self.app, command=x['command'], text=x['text']))
         self.app.display()
 
 
