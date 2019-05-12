@@ -4,7 +4,7 @@ from google_images_search import GoogleImagesSearch
 
 gis = GoogleImagesSearch('AIzaSyCcrhOwuC5TK_O18yjeSTCuXEHVxk-9LTQ', '005383774336154718355:xu2fzioh270')
 
-# CDU funktioniert sehr schlecht
+# CDU und NPD funktionieren sehr schlecht
 partei_list = ['SPD', 'NPD', 'MLPD', 'Piratenpartei']
 
 # define search params:
