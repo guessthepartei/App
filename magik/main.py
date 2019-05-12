@@ -11,17 +11,17 @@ def out(command):
 partys = os.listdir("dataset")
 partys.remove(".DS_Store")
 
-print(partys) 
+#print(partys) 
 
 party = random.choice(partys)
 
 
 print(party)
 plakats = os.listdir('dataset/{}'.format(party))
-print(plakats)
+#print(plakats)
 
 plakat = random.choice(plakats)
-print(plakat)
+#print(plakat)
 
 
 os.system("python3 parsing.py {}/{}".format(party, plakat))
