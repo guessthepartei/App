@@ -1,5 +1,5 @@
 import os, os.path
-import parsing
+import magik.parsing
 import random
 # import parse.py
 import subprocess
@@ -10,7 +10,7 @@ def out(command):
     return result.stdout
 
 def main():
-   partys = os.listdir("dataset")
+   partys = os.listdir("../magik/dataset")
    partys.remove(".DS_Store")
 
 #print(partys) 
@@ -19,11 +19,11 @@ def main():
 
 
    print(party)
-   plakats = os.listdir('dataset/{}'.format(party))
+   plakats = os.listdir('../magik/dataset/{}'.format(party))
 #print(plakats)
 
    plakat = random.choice(plakats)
 #print(plakat)
 
-   return "dataset/{}/{}".format(party, plakat), parsing.parsing("{}/{}".format(party, plakat))
+   return "../magik/dataset/{}/{}".format(party, plakat), magik.parsing.parsing("{}/{}".format(party, plakat)), party
 #os.system("python3 parsing.py {}/{}".format(party, plakat))
