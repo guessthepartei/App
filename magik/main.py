@@ -4,6 +4,7 @@ import random
 # import parse.py
 import subprocess
 from subprocess import PIPE, run
+import re
 
 def out(command):
     result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True)
@@ -23,7 +24,7 @@ def main():
 #print(plakats)
 
    plakat = random.choice(plakats)
-#print(plakat)
+   #print(plakat)
 
    return "../magik/dataset/{}/{}".format(party, plakat), magik.parsing.parsing("{}/{}".format(party, plakat)), party
 #os.system("python3 parsing.py {}/{}".format(party, plakat))
