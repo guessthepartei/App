@@ -1,6 +1,5 @@
 import os, os.path
 import parsing
-
 result = []
 
 partys = ["AfD", "Die_Gruene", "Die_Linke", "Die_Partei", "MLPD", "Piratenpartei", "SPD", "Tierschutzpartei"]
@@ -8,7 +7,12 @@ partys = ["AfD", "Die_Gruene", "Die_Linke", "Die_Partei", "MLPD", "Piratenpartei
 for party in partys:
    dict = {party:[]}
    print(party)
-   for plakat in os.listdir("dataset/{}".format(party)):
+   plakats = os.listdir("dataset/{}".format(party))
+   if ".DS_Store" in plakats:
+      plakats.remove(".DS_Store")
+   
+   for plakat in plakats:
+      print(plakat)
       dict.get(party).append(parsing.parsing("{}/{}".format(party, plakat)))
-   print(dict)
    result.append(dict)
+print(result)

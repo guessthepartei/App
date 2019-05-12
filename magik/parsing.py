@@ -37,14 +37,14 @@ def parsing(name):
 
 # Extract the word bounding boxes and text.
    line_infos = [region["lines"] for region in analysis["regions"]]
-   word_infos = []
-   lines = []
    str = ""
    for line in line_infos:
       for word_metadata in line:
          for word_info in word_metadata["words"]:
             str = str + " " + word_info["text"]
       str = str + "\n"
-   word_infos
-   print(str)
-   return str
+   print(str.strip())
+   return str.strip()
+
+
+parsing(sys.argv[1])
