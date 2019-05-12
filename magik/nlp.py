@@ -30,10 +30,6 @@ for sen in range(0, len(X)):
 
     # Substituting multiple spaces with single space
     document = re.sub(r'\s+', ' ', document, flags=re.I)
-    document = re.sub(r'[üÜ]', 'ue', document, flags=re.I)
-    document = re.sub(r'[öÖ]', 'oe', document, flags=re.I)
-    document = re.sub(r'[äÄ]', 'ae', document, flags=re.I)
-    document = re.sub(r'[ß]', 'ss', document, flags=re.I)
     # Removing prefixed 'b'
     document = re.sub(r'^b\s+', '', document)
 
@@ -43,12 +39,31 @@ for sen in range(0, len(X)):
     documents.append(document)
 
 from sklearn.feature_extraction.text import TfidfVectorizer
+import nltk
+import ssl
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
+nltk.download()
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+
+
+from sklearn.feature_extraction.text import CountVectorizer  
+vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('german'))  
+X = vectorizer.fit_transform(documents).toarray()  
+
 
 from sklearn.feature_extraction.text import TfidfTransformer  
-tfidfconverter = TfidfVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=[' ', ',', '.'])
-X = tfidfconverter.fit_transform(documents).toarray()  
+tfidfconverter = TfidfTransformer()  
+X = tfidfconverter.fit_transform(X).toarray()  
 
 
+print(documents)
 from sklearn.model_selection import train_test_split  
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)  
 from sklearn.ensemble import RandomForestClassifier
@@ -69,14 +84,3 @@ print(accuracy_score(y_test, y_pred))
 with open('text_classifier', 'wb') as picklefile:  
     pickle.dump(classifier,picklefile)
 
-
-
-with open('text_classifier', 'rb') as training_model:  
-    model = pickle.load(training_model)
-
-
-y_pred2 = model.predict(X_test)
-
-print(confusion_matrix(y_test, y_pred2))  
-print(classification_report(y_test, y_pred2))  
-print(accuracy_score(y_test, y_pred2))  
