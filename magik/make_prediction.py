@@ -7,30 +7,20 @@ with open('text_classifier', 'rb') as training_model:
    model = pickle.load(training_model)
 from sklearn.feature_extraction.text import TfidfVectorizer
     
-from sklearn.feature_extraction.text import TfidfTransformer
 #X = sys.argv[1]
 X = ["Mach mit! Damit sich wirklich etwas ändert Konsequent. Internationalistische Liste"]
 
 import nltk
 import ssl
-try:
-    _create_unverified_https_context = ssl._create_unverified_context
-except AttributeError:
-    pass
-else:
-    ssl._create_default_https_context = _create_unverified_https_context
 
 
-
-nltk.download()
+#nltk.download()
 #nltk.download('stopwords')
 from nltk.corpus import stopwords
 
 from sklearn.feature_extraction.text import CountVectorizer
-#vectorizer = CountVectorizer(max_features=5, min_df=5, max_df=0.7, stop_words=stopwords.words('german'))
-#X = vectorizer.fit_transform(documents).toarray()
-
-#print(X)
+vectorizer = CountVectorizer(max_features=5, min_df=5, max_df=0.7, stop_words=stopwords.words('german'))
+X = vectorizer.fit_transform(documents).toarray()
 
 
 from sklearn.feature_extraction.text import TfidfTransformer

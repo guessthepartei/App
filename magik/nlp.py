@@ -40,12 +40,6 @@ for sen in range(0, len(X)):
     # Converting to Lowercase
     document = document.lower()
     
-    document = document.split()
-
-    document = [stemmer.lemmatize(word) for word in document]
-    document = ' '.join(document)
-
-
     documents.append(document)
 
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -82,7 +76,6 @@ classifier.fit(X_train, y_train)
 
 y_pred = classifier.predict(X_test)  
 
-print(X_test)
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 
 print(confusion_matrix(y_test,y_pred))  
