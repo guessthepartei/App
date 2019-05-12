@@ -3,7 +3,7 @@ import parsing
 
 result = []
 
-partys = ["AfD", "Die Gruene", "Die Linke", "Die Partei", "MLPD", "Piratenpartei", "SPD", "Tierschutzpartei"]
+partys = ["AfD", "Die_Gruene", "Die_Linke", "Die_Partei", "MLPD", "Piratenpartei", "SPD", "Tierschutzpartei"]
 
 for party in partys:
    dict = {party:[]}

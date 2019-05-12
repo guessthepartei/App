@@ -25,7 +25,6 @@ def parsing(name):
 
 # Set image_url to the URL of an image that you want to analyze.
    image_url = "https://raw.githubusercontent.com/guessthepartei/App/master/magik/dataset/" + name
-   print(image_url)
 
 
    headers = {'Ocp-Apim-Subscription-Key': subscription_key}
