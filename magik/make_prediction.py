@@ -11,7 +11,6 @@ from sklearn.feature_extraction.text import TfidfTransformer
 #X = sys.argv[1]
 X = ["Mach mit! Damit sich wirklich etwas ändert Konsequent. Internationalistische Liste"]
 
-
 import nltk
 import ssl
 try:
@@ -28,8 +27,11 @@ nltk.download()
 from nltk.corpus import stopwords
 
 from sklearn.feature_extraction.text import CountVectorizer
-vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('german'))
-X = vectorizer.fit_transform(documents).toarray()
+#vectorizer = CountVectorizer(max_features=5, min_df=5, max_df=0.7, stop_words=stopwords.words('german'))
+#X = vectorizer.fit_transform(documents).toarray()
+
+#print(X)
+
 
 from sklearn.feature_extraction.text import TfidfTransformer
 tfidfconverter = TfidfTransformer()

@@ -1,9 +1,6 @@
 import requests
 import sys
 # If you are using a Jupyter notebook, uncomment the following line.
-#%matplotlib inline
-import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
 from PIL import Image
 from io import BytesIO
 
@@ -47,4 +44,4 @@ def parsing(name):
    return str.strip()
 
 
-parsing(sys.argv[1])
+#parsing(sys.argv[1])

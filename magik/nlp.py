@@ -16,6 +16,10 @@ for party in data:
       y.append(party)
 
 
+from nltk.stem import WordNetLemmatizer
+
+stemmer = WordNetLemmatizer()
+
 documents = []
 
 for sen in range(0, len(X)):  
@@ -35,6 +39,12 @@ for sen in range(0, len(X)):
 
     # Converting to Lowercase
     document = document.lower()
+    
+    document = document.split()
+
+    document = [stemmer.lemmatize(word) for word in document]
+    document = ' '.join(document)
+
 
     documents.append(document)
 
@@ -48,8 +58,8 @@ except AttributeError:
 else:
     ssl._create_default_https_context = _create_unverified_https_context
 
-nltk.download()
-nltk.download('stopwords')
+#nltk.download()
+#nltk.download('stopwords')
 from nltk.corpus import stopwords
 
 
@@ -63,9 +73,8 @@ tfidfconverter = TfidfTransformer()
 X = tfidfconverter.fit_transform(X).toarray()  
 
 
-print(documents)
 from sklearn.model_selection import train_test_split  
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)  
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 from sklearn.ensemble import RandomForestClassifier
 
 classifier = RandomForestClassifier(n_estimators=1000, random_state=0)  
@@ -73,7 +82,7 @@ classifier.fit(X_train, y_train)
 
 y_pred = classifier.predict(X_test)  
 
-
+print(X_test)
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 
 print(confusion_matrix(y_test,y_pred))  
