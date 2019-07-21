@@ -1,4 +1,4 @@
-Guess the party
+# Guess the party
 ![main](https://raw.githubusercontent.com/guessthepartei/App/serverTest/image.png)
 
 
