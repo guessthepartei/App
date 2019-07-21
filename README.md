@@ -2,7 +2,7 @@
 ![main](https://raw.githubusercontent.com/guessthepartei/App/serverTest/image.png)
 
 
-Try to win aganst very-very bad trained neural network.
+Try to win aganst very-very bad trained neural network xD
 
 
 To run the server enter in bash
